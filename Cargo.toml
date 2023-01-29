@@ -2,6 +2,7 @@
 name = "uni"
 version = "0.1.0"
 edition = "2021"
+description = "A Package manager wrapper on top of common package manaegrs such as NPM, YARN, PNPM etc..."
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
