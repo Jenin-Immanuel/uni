@@ -1,6 +1,6 @@
 <div align="center">
-    # Uni
+# Uni
 
-    Universal Package Manager for various package managers in one place
+Universal Package Manager for various package managers in one place
 
 </div>
