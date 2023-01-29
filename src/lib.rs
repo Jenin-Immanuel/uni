@@ -20,8 +20,6 @@ pub mod parser;
 pub mod render;
 
 
-pub mod npm;
-
 pub mod nopack;
 
 pub mod utils;
