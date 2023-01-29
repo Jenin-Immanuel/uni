@@ -70,4 +70,4 @@ uni <instructions>
 
 ## LICENSE
 
-### [MIT](https://github.com/Rajaniraiyn/upm/blob/main/LICENSE)
+### [MIT](https://github.com/Jenin-Immanuel/uni/blob/main/LICENSE)
