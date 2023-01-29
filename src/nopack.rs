@@ -91,19 +91,6 @@ fn return_enum_package(p: &str) -> Package {
     }
 }
 
-// pub fn check_command(args: Vec<String>) {
-    
-//     if check_instruction_commands(&args[0]) {
-//         let pack = match ask_package() {
-//             Ok(s) => s,
-//             Err(e) => {
-//                 panic!("{}", e)
-//             },
-//         };
-//         println!("{:?}", pack);
-//     }   
-// }
-
 fn check_instruction_commands(ins: &str) -> bool {
     let ins_set = [
         "init",
@@ -119,18 +106,3 @@ fn check_instruction_commands(ins: &str) -> bool {
     }
     false
 }
-
-
-
-// #[warn(unused_variables)]
-// #[cfg(target_os = "windows")]
-// fn execute(args: Vec<String>) {
-
-// }
-
-// #[cfg(target_os = "linux")]
-// fn execute(args: Vec<String>) {
-
-// }
-
-
