@@ -1,10 +1,10 @@
 
 pub fn help_str<'a>() -> &'a str {
-    r#"Hello"#
+    r#"Help goes here"#
 }
 
 pub fn help() {
-    println!("Hello");
+    println!("{}", help_str());
 }
 
 pub fn no_pack() {

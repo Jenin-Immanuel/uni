@@ -7,7 +7,7 @@ use serde_json::Value as JsonValue;
 // use std::process::{Command};
 
 
-pub fn parse(args: Vec<String>) -> (Package, Instruction) {
+pub fn parse(args: Vec<String>) -> Package {
     println!("Recieved args: {:?}", args);
  
     let package: Package = crate::render::checker();
@@ -24,21 +24,25 @@ pub fn parse(args: Vec<String>) -> (Package, Instruction) {
         },
         NoPack => {
             println!("Currently no package");
-            crate::help_menu::no_pack();
+            // crate::help_menu::no_pack();
 
 
             // Sample Process
         }
     };
     
-    let res = check_instruction(&args[0]);
+    // let res = check_instruction(&args[0]);
 
-    (package, res)
+    package
 }
 
 
+pub fn check_package_json() -> bool {
+    std::path::Path::new("package.json").exists()
+}
+
 fn check_instruction(ins: &str) -> Instruction {
-    let list = vec![
+    let list = [
         "help",
         "init",
         "install",
@@ -46,6 +50,7 @@ fn check_instruction(ins: &str) -> Instruction {
         "add",
         "uninstall",
         "remove",
+        "view",
     ];
 
     if list.contains(&ins)  {
@@ -54,10 +59,7 @@ fn check_instruction(ins: &str) -> Instruction {
     if is_script(&ins) {
         return Instruction::Script
     }
-    
-
     Instruction::InvalidCommand
-    // Ok(ins.to_owned())
 }
 
 fn is_script(ins: &str) -> bool {
@@ -73,7 +75,8 @@ fn is_script(ins: &str) -> bool {
     let scripts = match std::fs::read_to_string("package.json") {
         Ok(s) => serde_json::from_str::<JsonValue>(&s).unwrap()["scripts"].clone(),
         Err(_) => {
-            panic!("Unable to open the file\nCheck whether the file is present");
+            crate::errors::display_err_msg("Unable to open the file\nCheck whether the file is present");
+            std::process::exit(0);
         },
     };
 
@@ -84,4 +87,16 @@ fn is_script(ins: &str) -> bool {
     }
 
     false
-} 
+}
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn is_script_valid() {
+        let ins = "script";
+        assert_eq!(false, is_script(ins));
+    }
+}
